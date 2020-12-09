@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-	<title>About Weather App</title>	
+	<title>Acerca de - Weather App</title>	
 	<%- include('partials/meta.html') %>
+
+	<meta name="description" content="Weather App - Aplicación creada con nodejs, bootstrap, jquery, animatecss este es el proyecto final del curso MisionTIC2020 en la ruta 1 de programación." />
+	<meta name="author" content="Andres Parra Garzón" />
+	<meta name="keywords" content="clima, weather, bootstrap, animatecss, jquery, nodejs, express, andres parra garzon, misiontic2022, programacion." />
 </head>
 <body>
 	<%- include('partials/header.html') %>
+
+	<main>
+		<div class="container">
+			<section class="about row pb-4">
+				<div class="d-flex align-center col-sm-12 col-md-4 pb-4">
+					<img class="animate__animated animate__backInLeft about-img justify-content-center d-block" src="/assets/perfil.jpg" alt="Imágen de Andres Parra Garzón" />
+				</div>
+				<div class="animate__animated animate__backInRight mt-4 col-sm-12 col-md-8">
+					<h2 class="mb-4">🖐️ Desarrollado por Andrés Parra Garzón</h2>
+					<p>Frontend Developer & Web Developer, me encanta javascript y algunos de sus frameworks como ReactJS y VueJS. Manejo un poco del backend con nodejs y bases de datos con MongoDB. Este proyecto lo desarrolle con NodeJS(express), ejs como motor de plantillas, bootstrap para los estilos y javascript(jquery). Todas estas tecnologias y muchas más fue la que aprendimos en el curso de <strong>MisionTIC2022</strong> y con este proyecto practiqué todo lo aprendido. 🚀🚀🚀</p>
+				</div>
+			</section>
+
+			<section class="animate__animated animate__backInUp social-media text-center mt-4 pb-4">
+				<a href="https://facebook.com/andresparradev" target="_blank"><i class="fab fa-facebook"></i></a>
+				<a href="https://twitter.com/AndresParraGar4" target="_blank"><i class="fab fa-twitter"></i></a>
+				<a href="https://www.instagram.com/andresparradev/" target="_blank"><i class="fab fa-instagram"></i></a>
+				<a href="https://www.linkedin.com/in/andr%C3%A9s-alfonso-parra-garz%C3%B3n-37529919a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+				<a href="https://github.com/AndresParraGO" target="_blank"><i class="fab fa-github"></i></a>
+			</section>
+		</div>
+	</main>	
+
+	<%- include('partials/footer.html') %>
 </body>
 </html>

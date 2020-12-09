@@ -8,7 +8,18 @@
 	box-sizing: border-box;
 }
 
+@keyframes moveBg {
+	to {
+		background-position: 0 0;
+	}
+	from {
+		background-position: 100% 0;
+	}
+}
+
 body {
+	transition: all 500ms linear;
+	height: 100%;
 	background-color: #333;
 	font-family: 'Quicksand', sans-serif;
 }
@@ -17,7 +28,124 @@ h1,h2,h3,h4,h5,h6 {
 	font-family: 'IBM Plex Sans', sans-serif;
 }
 
+
+/* Scroll */
+
+*::-webkit-scrollbar{
+	width: 10px;
+	height: 8px;
+	display: block;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgb(0, 115, 215);
+    border-radius: 4px;
+}
+
+
 .header {
 	width: 100%;
 	box-shadow: 0 2px 5px 0 #222;
+}
+
+.search {
+	max-width: 600px;
+	min-height: 500px;
+}
+
+.search-title {
+	color: #fff;
+}
+
+.search form {
+	width: 100%;
+}
+
+.home-bg {
+	background: url(https://images.pexels.com/photos/5707715/pexels-photo-5707715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+	animation: moveBg 30s infinite alternate;
+	transition: all 100ms linear;
+}
+
+.city-data {
+	width: 90%;
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	color: #fff;
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px 0 #252525
+}
+
+.city-title {
+	color: #aaa;
+}
+
+.city-icon-weather {
+	width: 100px;
+	margin: 0 auto;
+}
+
+#map {
+	width: 100%;
+	height: 300px;
+	border-bottom-right-radius: inherit;
+	border-bottom-left-radius: inherit;
+}
+
+.footer-copyright {
+	color: #fff;
+}
+
+.icon-loading {
+	display: block;
+	width: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.icon-info {
+	width: 50px;
+}
+
+
+.not-found {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #eee;
+}
+.not-found h3 {
+	font-size: 4rem;
+}
+
+/* Bg Weahters */
+
+.bg-rain {background: url(/assets/rain.jpeg)}
+.bg-snow {background: url(/assets/snow.jpeg)}
+.bg-clear {background: url(/assets/clear.jpeg)}
+.bg-clouds {background: url(/assets/clouds.jpeg)}
+
+
+
+/*  About  */
+.about {
+	color: #fff;
+	margin-top: 4rem;
+}
+.about-img {
+	margin: 2rem auto 0 auto;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	box-shadow: 5px 5px 10px 0 #222;
+}
+.social-media {
+	margin-bottom: 7rem;
+}
+.social-media a {
+	font-size: 1.5rem;
+	margin: 0 .5rem;
 }
