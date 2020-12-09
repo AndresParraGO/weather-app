@@ -22,9 +22,8 @@ function renderErrorCity() {
 
 function getDataOfCity(city) {
 	$.ajax({
-		url: `/api/${city}`,
+		url: `/api/city/${city}`,
 		success: function(data) {
-            console.log(data)
             if(data.cod === "404") {
                 renderErrorCity();
             } else {
