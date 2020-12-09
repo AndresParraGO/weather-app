@@ -51,6 +51,14 @@ app.get('/api/city/:city', async (req, res) => {
 		.then(data => res.json(data));
 });
 
+app.post('/api/city/coords', async (req, res) => {
+	fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lon}&appid=${API_KEY}`)
+		.then(response => response.json())
+		.then(data => res.json(data));
+});
+
+
+
 app.post('/api/new-comment', (req, res) => {
 	CommentModel({
 		txt: req.body.txt,
@@ -59,6 +67,7 @@ app.post('/api/new-comment', (req, res) => {
 	.save()
 	res.json({msg: 'Guardado correctamente'});
 });
+
 app.get('/api/get-comments', async (req, res) => {
 	const comments = await CommentModel.find();
     res.json(comments);
