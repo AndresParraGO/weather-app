@@ -93,7 +93,7 @@ function renderMap(lon, lat) {
         ],
         view: new ol.View({
           center: ol.proj.fromLonLat([lon, lat]),
-          zoom: 8
+          zoom: 10
         })
     });
 }

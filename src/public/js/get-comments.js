@@ -20,6 +20,10 @@ async function renderComments() {
 		} else {
 			comments.forEach(el => {
 				let itemComment = document.createElement('article');
+				let itemCommentText = document.createElement('p');
+				let itemCommentDate = document.createElement('span');
+				let itemCommentStars = document.createElement('div');
+
 
 				let stars = '';
 				for(let i = 1; i <= el.stars; i++) {
@@ -27,11 +31,16 @@ async function renderComments() {
 				}
 
 				itemComment.className = 'animate__animated animate__backInUp m-4 bg-dark p-4';
-				itemComment.innerHTML = `
-					<p class="fs-4 mb-0">${el.txt}</p>
-					<span class="section-comments-date">${el.createdAt}</span>
-					<div class="section-comments-stars">${stars}</div>
-				`;
+				itemCommentText.textContent = el.txt;
+				itemCommentText.className = "fs-4 mb-0";
+				itemCommentDate.textContent = el.createdAt;
+				itemCommentDate.className = "section-comments-date";
+				itemCommentStars.innerHTML = stars;
+				itemCommentStars.className = "section-comments-stars";
+
+				itemComment.appendChild(itemCommentText);
+				itemComment.appendChild(itemCommentDate);
+				itemComment.appendChild(itemCommentStars);
 				$sectionComments.appendChild(itemComment);
 			});
 		}

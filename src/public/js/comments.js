@@ -59,6 +59,9 @@ function initComments() {
 			renderComments();
 		}
 
+		// Reset Form
+		e.target.children[0].value = '';
+		points = null;
 	});
 
 }
