@@ -8,10 +8,17 @@ function kelvinToCelcius(tempKelvin) {
 }
 
 function renderMyWeather(data) {
+	let iconWeather;
+
+    if(data.weather[0].main === 'Clouds') iconWeather = '/assets/clouds.svg';
+    else if(data.weather[0].main === 'Rain') iconWeather = '/assets/rain.svg';
+    else if(data.weather[0].main === 'Snow') iconWeather = '/assets/snow.svg';
+    else if(data.weather[0].main === 'Clear') iconWeather = '/assets/clear.svg';
+
 	let div = document.createElement('div');
 	div.className = 'animate__animated animate__wobble';
 	div.innerHTML = `
-		<img src="/assets/clouds.svg" class="d-block" alt="Logo del clima - weather" />
+		<img src=${iconWeather} class="d-block" alt="Logo del clima - weather" />
 		<span class="fs-1">${kelvinToCelcius(data.main.temp)}C</span>
 		<p>${data.name} / ${data.sys.country}</p>
 	`;
