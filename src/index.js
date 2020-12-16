@@ -1,13 +1,12 @@
-
 const express = require('express');
 const path = require('path');
 const fetch = require('node-fetch');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const API_KEY = '226dbba9ae6f257e0974c3aa748fd529';
-
+const API_KEY_OPENWEATHER = process.env.API_KEY;
 
 // Config
 
@@ -46,13 +45,13 @@ app.get('/city/:city', async (req, res) => {
 });
 
 app.get('/api/city/:city', async (req, res) => {
-	fetch(`http://api.openweathermap.org/data/2.5/weather?q=${req.params.city}&appid=${API_KEY}`)
+	fetch(`http://api.openweathermap.org/data/2.5/weather?q=${req.params.city}&appid=${API_KEY_OPENWEATHER}`)
 		.then(response => response.json())
 		.then(data => res.json(data));
 });
 
 app.post('/api/city/coords', async (req, res) => {
-	fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lon}&appid=${API_KEY}`)
+	fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lon}&appid=${API_KEY_OPENWEATHER}`)
 		.then(response => response.json())
 		.then(data => res.json(data));
 });
