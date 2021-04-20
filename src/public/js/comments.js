@@ -1,69 +1,60 @@
-
-
-
-
 function initComments() {
+  renderComments()
 
-	// Render Comments
-	renderComments();
+  const $iconComment = document.getElementById('icon-comment')
+  const $commentContent = document.getElementById('comment-content')
+  const $commentForm = document.getElementById('comment-form')
 
-	const $iconComment = document.getElementById('icon-comment');
-	const $commentContent = document.getElementById('comment-content');
-	const $commentForm = document.getElementById('comment-form');
+  const $commentStars = Array.from(document.querySelectorAll('.comment-stars span'))
 
-	const $commentStars = Array.from(document.querySelectorAll('.comment-stars span'));
+  let points = null
 
-	let points = null;
+  function createComment(txt, stars) {
+    fetch('/api/new-comment', {
+      method: 'POST',
+      body: JSON.stringify({ txt: txt, stars: stars }),
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.json())
+    .then(data => $commentContent.classList.remove('active'))
+  }
 
-	function createComment(txt, stars) {
-		fetch('/api/new-comment', {
-			method: 'POST',
-			body: JSON.stringify({ txt: txt, stars: stars }),
-			headers: { 'Content-Type': 'application/json' }
-		})
-		.then(res => res.json())
-		.then(data => $commentContent.classList.remove('active'));
-	}
+  document.addEventListener('click', e => {
+    if(e.toElement.id == 'icon-comment'|| e.toElement.parentElement.id == 'icon-comment') {
+      $commentContent.classList.toggle('active')
+    }
+  })
 
-
-
-	document.addEventListener('click', e => {
-		if(e.toElement.id == 'icon-comment'|| e.toElement.parentElement.id == 'icon-comment') {
-			$commentContent.classList.toggle('active');	
- 		}
-	});
-
-	$commentStars.forEach((el, i, arr) => {
-		el.addEventListener('click', e => {
-			points = el.getAttribute('data-value');
-			arr.forEach((element, index) => {
-				if(index < points) {
-					element.classList.add('active')
-				} else {
-					element.classList.remove('active');
-				}
-			});
-		});
-	});
+  $commentStars.forEach((el, i, arr) => {
+    el.addEventListener('click', e => {
+      points = el.getAttribute('data-value')
+      arr.forEach((element, index) => {
+        if(index < points) {
+          element.classList.add('active')
+        } else {
+          element.classList.remove('active')
+        }
+      })
+    })
+  })
 
 
-	// Event Form Submit
-	$commentForm.addEventListener('submit', e => {
-		e.preventDefault();
-		let inputText = e.target.children[0].value;
+  // Event Form Submit
+  $commentForm.addEventListener('submit', e => {
+    e.preventDefault();
+    let inputText = e.target.children[0].value
 
-		if(inputText.length <= 0 || points === null) {
-			alert('Debes dar un puntaje y dejar un comentario')
-		} else {	
-			createComment(inputText, points);
-			renderComments();
-		}
+    if(inputText.length <= 0 || points === null) {
+      alert('Debes dar un puntaje y dejar un comentario')
+    } else {
+      createComment(inputText, points)
+      renderComments()
+    }
 
-		// Reset Form
-		e.target.children[0].value = '';
-		points = null;
-	});
-
+    // Reset Form
+    e.target.children[0].value = ''
+    points = null
+  })
 }
 
-document.addEventListener('DOMContentLoaded', initComments);
+document.addEventListener('DOMContentLoaded', initComments)
